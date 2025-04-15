@@ -4,8 +4,8 @@ namespace DoctorAppointment.Models
 {
     public class Availability
     {
-        public int Id { get; set; }
-
+        [Required]
+        public int AvailabilityId { get; set; }
         [Required]
         public int DoctorId { get; set; }
 

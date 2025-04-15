@@ -4,7 +4,7 @@ namespace DoctorAppointment.Models
 {
     public class Report
     {
-        public int Id { get; set; }
+        public int ReportId { get; set; }
 
         [Required]
         public int DoctorId { get; set; }

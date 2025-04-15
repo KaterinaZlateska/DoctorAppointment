@@ -24,11 +24,11 @@ namespace DoctorAppointment.Migrations
 
             modelBuilder.Entity("DoctorAppointment.Models.Appointment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("AppointmentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AppointmentId"));
 
                     b.Property<DateTime>("AppointmentDate")
                         .HasColumnType("datetime2");
@@ -42,7 +42,7 @@ namespace DoctorAppointment.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("AppointmentId");
 
                     b.HasIndex("DoctorId");
 
@@ -53,11 +53,11 @@ namespace DoctorAppointment.Migrations
 
             modelBuilder.Entity("DoctorAppointment.Models.AppointmentRequest", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("AppointmentRequestId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AppointmentRequestId"));
 
                     b.Property<int>("DoctorId")
                         .HasColumnType("int");
@@ -71,7 +71,7 @@ namespace DoctorAppointment.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("AppointmentRequestId");
 
                     b.HasIndex("DoctorId");
 
@@ -82,11 +82,11 @@ namespace DoctorAppointment.Migrations
 
             modelBuilder.Entity("DoctorAppointment.Models.Availability", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("AvailabilityId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AvailabilityId"));
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -103,7 +103,7 @@ namespace DoctorAppointment.Migrations
                     b.Property<TimeSpan>("StartTime")
                         .HasColumnType("time");
 
-                    b.HasKey("Id");
+                    b.HasKey("AvailabilityId");
 
                     b.HasIndex("DoctorId");
 
@@ -112,11 +112,11 @@ namespace DoctorAppointment.Migrations
 
             modelBuilder.Entity("DoctorAppointment.Models.Referral", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ReferralId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReferralId"));
 
                     b.Property<string>("ClinicAddress")
                         .IsRequired()
@@ -142,7 +142,7 @@ namespace DoctorAppointment.Migrations
                     b.Property<DateTime>("ReferralDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                    b.HasKey("ReferralId");
 
                     b.HasIndex("DoctorId");
 
@@ -153,11 +153,11 @@ namespace DoctorAppointment.Migrations
 
             modelBuilder.Entity("DoctorAppointment.Models.Report", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ReportId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReportId"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -192,7 +192,7 @@ namespace DoctorAppointment.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ReportId");
 
                     b.HasIndex("DoctorId");
 
@@ -203,11 +203,11 @@ namespace DoctorAppointment.Migrations
 
             modelBuilder.Entity("DoctorAppointment.Models.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -236,9 +236,9 @@ namespace DoctorAppointment.Migrations
                     b.Property<int>("Role")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
 
                     b.UseTptMappingStrategy();
                 });
@@ -372,7 +372,7 @@ namespace DoctorAppointment.Migrations
                 {
                     b.HasOne("DoctorAppointment.Models.User", null)
                         .WithOne()
-                        .HasForeignKey("DoctorAppointment.Models.Admin", "Id")
+                        .HasForeignKey("DoctorAppointment.Models.Admin", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -381,7 +381,7 @@ namespace DoctorAppointment.Migrations
                 {
                     b.HasOne("DoctorAppointment.Models.User", null)
                         .WithOne()
-                        .HasForeignKey("DoctorAppointment.Models.Doctor", "Id")
+                        .HasForeignKey("DoctorAppointment.Models.Doctor", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -390,7 +390,7 @@ namespace DoctorAppointment.Migrations
                 {
                     b.HasOne("DoctorAppointment.Models.User", null)
                         .WithOne()
-                        .HasForeignKey("DoctorAppointment.Models.Patient", "Id")
+                        .HasForeignKey("DoctorAppointment.Models.Patient", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

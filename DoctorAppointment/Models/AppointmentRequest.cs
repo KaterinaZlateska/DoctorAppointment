@@ -5,7 +5,8 @@ namespace DoctorAppointment.Models
 {
     public class AppointmentRequest
     {
-        public int Id { get; set; }
+        [Required]
+        public int AppointmentRequestId { get; set; }
 
         [Required]
         public int PatientId { get; set; }

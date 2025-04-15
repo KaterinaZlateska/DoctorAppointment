@@ -4,7 +4,7 @@ namespace DoctorAppointment.Models
 {
     public class Referral
     {
-        public int Id { get; set; }
+        public int ReferralId { get; set; }
 
         [Required]
         public int DoctorId { get; set; }
